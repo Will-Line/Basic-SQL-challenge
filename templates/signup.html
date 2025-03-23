@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+<!DOCTYPE html>
+<html>
+{% block body %}
+
+{% macro flashMessages() -%}
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+<ul class=flashes>
+    {% for message in messages %}
+    <li>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+{% endwith %}
+{%- endmacro %}
+
+<form method="POST" class="m-5">
+    <h1 class="">Sign up</h1>
+
+    <div class="col">
+        <div class="row m-5">
+            <label for="inputUsername" class="">Username</label>
+            <input type="text" name="inputUsername" id="inputUsername" class="" placeholder="Username" required=""
+                autofocus="">
+        </div>
+        <div class="row m-5">
+            <label for="inputPassword" class="">Password</label>
+            <input type="password" name="inputPassword" id="inputPassword" class="" placeholder="Password" required="">
+        </div>
+    </div>
+    {{ flashMessages() }}
+
+    <button class="mt-4" type="submit">Sign up</button>
+
+</form>
+{% endblock %}
+
+</html>

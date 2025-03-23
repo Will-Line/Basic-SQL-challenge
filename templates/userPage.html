@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+<!DOCTYPE html>
+<html>
+
+{% block body %}
+
+{% macro flashMessages() -%}
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+<ul class=flashes>
+    {% for message in messages %}
+    <li>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+{% endwith %}
+{%- endmacro %}
+
+{{ flashMessages() }}
+
+<div>
+
+    <h2>
+        Search the shop
+    </h2>
+    <search>
+        <form>
+            <div class="row m-5">
+                <label for="inputSearch" class="">Search</label>
+                <input type="text" name="search" id="inputSearch" class="" placeholder="" required="" autofocus="">
+            </div>
+        </form>
+    </search>
+</div>
+
+
+<div>
+    <div class="col">
+        {% for i in range(items|length) %}
+        <h4>{{items[i][0]}}</h4>
+        <p>{{items[i][1]}}</p>
+        {% endfor %}
+    </div>
+</div>
+
+<div style="position: relative; bottom: 0; left: 0;">
+    <a href="/logout">Logout</a>
+</div>
+{% endblock %}
+
+</html>
+
